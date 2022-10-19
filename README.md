@@ -19,7 +19,3 @@ outperforming strong baselines based on large pre-trained language models.
 + Relational information of CIC tweets' authors
 + VaxxStance ES RTs from user TLs
 
-## Reference
-Joseba Fernandez de Landa and Rodrigo Agerri (2022). Relational Embeddings for Language Independent Stance Detection. 
-https://arxiv.org/abs/2210.05715
-
