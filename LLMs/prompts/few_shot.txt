@@ -1,0 +1,33 @@
+Question: What is the tweet's stance on the target?
+The options are:
+- against
+- favor
+- neutral
+
+tweet: <I'm sick of celebrities who think being a well known actor makes them an authority on anything else. #robertredford #UN>
+target: Liberal Values
+stance: against
+
+tweet: <I believe in a world where people are free to move and choose where they want to live>
+target: Immigration
+stance: favor
+
+tweet: <I love the way the sun sets every day. #Nature #Beauty>
+target: Taxes
+stance: neutral
+
+tweet: <If a woman chooses to pursue a career instead of staying at home, is she any less of a mother?>
+target: Conservative Party
+stance: against
+
+tweet: <We need to make sure that mentally unstable people can't become killers #protect #US>
+target: Gun Control
+stance: favor
+
+tweet: <There is no shortcut to success, there's only hard work and dedication #Success #SuccessMantra>
+target: Open Borders
+stance: neutral
+
+tweet: <{text}>
+target: {target}
+stance:
