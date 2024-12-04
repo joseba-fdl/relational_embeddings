@@ -1,0 +1,165 @@
+{
+    "datasets": {
+        "cic-es": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "TWEET",
+            "target": "Catalan Referendum",
+            "label_col": "LABEL",
+            "prompts": "trilabel"
+        },
+        
+        "cic-es-r": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "TWEET",
+            "target": "Catalan Referendum",
+            "label_col": "LABEL",
+            "prompts": "trilabel"
+        },
+        
+        "cic-ca": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "TWEET",
+            "target": "Catalan Referendum",
+            "label_col": "LABEL",
+            "prompts": "trilabel"
+        },
+
+        "cic-ca-r": {
+            "test_path":#data_path,
+            "train_path": #data_path,
+            "text_col": "TWEET",
+            "target": "Catalan Referendum",
+            "label_col": "LABEL",
+            "prompts": "trilabel"
+        },
+
+        "sardi": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "text",
+            "target": "Sardines Movement",
+            "label_col": "label",
+            "prompts": "trilabel"
+        },
+
+        "vax-es": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "text",
+            "target": "vaccines",
+            "label_col": "label",
+            "prompts": "trilabel"
+        },
+
+        "vax-eu": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "text",
+            "target": "vaccines",
+            "label_col": "label",
+            "prompts": "trilabel"
+        },
+
+        "se-abo": {
+            "test_path": #data_path,
+            "train_path": v,
+            "text_col": "TWEET",
+            "target": "Legalization of Abortion",
+            "label_col": "STANCE",
+            "prompts": "trilabel"
+        },
+
+        "se-ath": {
+            "test_path": #data_path,
+            "train_path": v,
+            "text_col": "TWEET",
+            "target": "Atheism",
+            "label_col": "STANCE",
+            "prompts": "trilabel"
+        },
+
+        "se-cli": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "TWEET",
+            "target": "Climate Change is a Real Concern",
+            "label_col": "STANCE",
+            "prompts": "trilabel"
+        },
+
+        "se-fem": {
+            "test_path": #data_path,
+            "train_path": #data_path,
+            "text_col": "TWEET",
+            "target": "Feminist Movement",
+            "label_col": "STANCE",
+            "prompts": "trilabel"
+        },
+
+        "se-hil": {
+            "test_path": _#data_path,
+            "train_path": #data_path,
+            "text_col": "TWEET",
+            "target": "Hillary Clinton",
+            "label_col": "STANCE",
+            "prompts": "trilabel"
+        }   
+        
+    },
+    "models": {
+        "llama2chat": "meta-llama/Llama-2-7b-chat-hf",
+        "llama3": "meta-llama/Meta-Llama-3-8B",
+        "llama3instruct": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "mixtral8": "mistralai/Mixtral-8x7B-v0.1",
+        "mistral7": "mistralai/Mistral-7B-v0.1",
+        "mixtralinstruct": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "mistralinstruct": "mistralai/Mistral-7B-Instruct-v0.2",
+        "commandr": "command-r-plus-08-2024"
+    },
+    "prompts": {
+        "trilabel": {
+            "few": {
+                "pref": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <I'm sick of celebrities who think being a well known actor makes them an authority on anything else. #robertredford #UN>\ntarget: Liberal Values\nstance: against\n\ntweet: <I believe in a world where people are free to move and choose where they want to live>\ntarget: Immigration\nstance: favor\n\ntweet: <I love the way the sun sets every day. #Nature #Beauty>\ntarget: Taxes\nstance: neutral\n\ntweet: <If a woman chooses to pursue a career instead of staying at home, is she any less of a mother?>\ntarget: Conservative Party\nstance: against\n\ntweet: <We need to make sure that mentally unstable people can't become killers #protect #US>\ntarget: Gun Control\nstance: favor\n\ntweet: <There is no shortcut to success, there's only hard work and dedication #Success #SuccessMantra>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nstance:",
+                "label_mapping": {
+                    "favor": "favor",
+                    "against": "against",
+                    "neutral": "neutral"
+                }
+            },
+            "sr": { 
+                "pref": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <I'm sick of celebrities who think being a well known actor makes them an authority on anything else. #robertredford #UN>\ntarget: Liberal Values\nreasoning: the author is implying that celebrities should not be seen as authorities on political issues, which is often associated with liberal values such as Robert Redford who is a climate change activist -> the author is against liberal values\nstance: against\n\ntweet: <I believe in a world where people are free to move and choose where they want to live>\ntarget: Immigration\nreasoning: the author is expressing a belief in a world with more freedom of movement -> the author is in favor of immigration\nstance: favor\n\ntweet: <I love the way the sun sets every day. #Nature #Beauty>\ntarget: Taxes\nreasoning: the author is in favor of nature and beauty -> the author is neutral towards taxes\nstance: neutral\n\ntweet: <If a woman chooses to pursue a career instead of staying at home, is she any less of a mother?>\ntarget: Conservative Party\nreasoning: the author is questioning traditional gender roles, which are often supported by the conservative party -> the author is against the conservative party\nstance: against\n\ntweet: <We need to make sure that mentally unstable people can't become killers #protect #US>\ntarget: Gun Control\nreasoning: the author is advocating for measures to prevent mentally unstable people from accessing guns -> the author is in favor of gun control\nstance: favor\n\ntweet: <There is no shortcut to success, there's only hard work and dedication #Success #SuccessMantra>\ntarget: Open Borders\nreasoning: the author is in favor of hard work and dedication -> the author is neutral towards open borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nreasoning:",
+                "suf":".\nstance:",
+                "label_mapping": {
+                    "favor": "favor",
+                    "against": "against",
+                    "neutral": "neutral"
+                }
+            },
+            "few-lang": { 
+                "eu": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Nazkatuta nago aktore ezagunak izateak beste edozein gaitan aditu bihurtzen dituela uste duten famatuekin. #robertredford #UN>\ntarget: Liberal Values\nstance: against\n\ntweet: <Jendea aske mugitzeko eta bizi nahi duen lekua aukeratzeko munduan sinesten dut>\ntarget: Immigration\nstance: favor\n\ntweet: <Eguzkia egunero nola sartzen den maite dut. #Natura #Edertasuna>\ntarget: Taxes\nstance: neutral\n\ntweet: <Emakume batek karrera bat jarraitzea aukeratzen badu etxean geratu beharrean, horrek ama txarragoa bihurtzen al du?>\ntarget: Conservative Party\nstance: against\n\ntweet: <Buruko gaixotasunak dituzten pertsonak hiltzaile bihurtu ez daitezen ziurtatu behar dugu #babestu #AEB>\ntarget: Gun Control\nstance: favor\n\ntweet: <Ez dago arrakastara daraman lasterbiderik, lana eta dedikazioa baino ez daude #Arrakasta #ArrakastarenGakoa>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nstance:",      
+                "es": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Estoy harto de los famosos que creen que ser un actor conocido los convierte en autoridad sobre cualquier otro tema. #robertredford #UN>\ntarget: Liberal Values\nstance: against\n\ntweet: <Creo en un mundo donde las personas sean libres de moverse y elegir dónde quieren vivir>\ntarget: Immigration\nstance: favor\n\ntweet: <Me encanta cómo se pone el sol cada día. #Naturaleza #Belleza>\ntarget: Taxes\nstance: neutral\n\ntweet: <Si una mujer elige seguir una carrera en lugar de quedarse en casa, ¿es menos madre por ello?>\ntarget: Conservative Party\nstance: against\n\ntweet: <Necesitamos asegurarnos de que las personas mentalmente inestables no puedan convertirse en asesinos #proteger #EEUU>\ntarget: Gun Control\nstance: favor\n\ntweet: <No hay atajos hacia el éxito, solo trabajo duro y dedicación #Éxito #MantraDelÉxito>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nstance:",    
+                "ca": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Estic fart dels famosos que es pensen que ser un actor conegut els converteix en una autoritat en qualsevol altra cosa. #robertredford #UN>\ntarget: Liberal Values\nstance: against\n\ntweet: <Crec en un món on la gent sigui lliure de moure's i escollir on vol viure>\ntarget: Immigration\nstance: favor\n\ntweet: <M'encanta com es pon el sol cada dia. #Natura #Bellesa>\ntarget: Taxes\nstance: neutral\n\ntweet: <Si una dona tria seguir una carrera professional en lloc de quedar-se a casa, és menys mare per això?>\ntarget: Conservative Party\nstance: against\n\ntweet: <Hem d'assegurar-nos que les persones mentalment inestables no puguin convertir-se en assassins #protegir #EUA>\ntarget: Gun Control\nstance: favor\n\ntweet: <No hi ha dreceres cap a l'èxit, només treball dur i dedicació #Èxit #MantraDelÈxit>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nstance:",    
+                "it": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Sono stufo dei personaggi famosi che pensano che essere un attore conosciuto li renda esperti di qualsiasi altro argomento. #robertredford #UN>\ntarget: Liberal Values\nstance: against\n\ntweet: <Credo in un mondo dove le persone siano libere di muoversi e scegliere dove vogliono vivere>\ntarget: Immigration\nstance: favor\n\ntweet: <Amo il modo in cui il sole tramonta ogni giorno. #Natura #Bellezza>\ntarget: Taxes\nstance: neutral\n\ntweet: <Se una donna sceglie di perseguire una carriera invece di rimanere a casa, è meno madre per questo?>\ntarget: Conservative Party\nstance: against\n\ntweet: <Dobbiamo assicurarci che le persone mentalmente instabili non possano diventare assassini #proteggere #USA>\ntarget: Gun Control\nstance: favor\n\ntweet: <Non esistono scorciatoie per il successo, ci sono solo duro lavoro e dedizione #Successo #MantraDelSuccesso>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nstance:",
+                "label_mapping": {
+                    "favor": "favor",
+                    "against": "against",
+                    "neutral": "neutral"
+                }
+            },
+            "sr-lang": { 
+                "eu": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Nazkatuta nago aktore ezagunak izateak beste edozein gaitan aditu bihurtzen dituela uste duten famatuekin. #robertredford #UN>\ntarget: Liberal Values\nreasoning: the author is implying that celebrities should not be seen as authorities on political issues, which is often associated with liberal values such as Robert Redford who is a climate change activist -> the author is against liberal values\nstance: against\n\ntweet: <Jendea aske mugitzeko eta bizi nahi duen lekua aukeratzeko munduan sinesten dut>\ntarget: Immigration\nreasoning: the author is expressing a belief in a world with more freedom of movement -> the author is in favor of immigration\nstance: favor\n\ntweet: <Eguzkia egunero nola sartzen den maite dut. #Natura #Edertasuna>\ntarget: Taxes\nreasoning: the author is in favor of nature and beauty -> the author is neutral towards taxes\nstance: neutral\n\ntweet: <Emakume batek karrera bat jarraitzea aukeratzen badu etxean geratu beharrean, horrek ama txarragoa bihurtzen al du?>\ntarget: Conservative Party\nreasoning: the author is questioning traditional gender roles, which are often supported by the conservative party -> the author is against the conservative party\nstance: against\n\ntweet: <Buruko gaixotasunak dituzten pertsonak hiltzaile bihurtu ez daitezen ziurtatu behar dugu #babestu #AEB>\ntarget: Gun Control\nreasoning: the author is advocating for measures to prevent mentally unstable people from accessing guns -> the author is in favor of gun control\nreasoning: the author is in favor of hard work and dedication -> the author is neutral towards open borders\nstance: favor\n\ntweet: <Ez dago arrakastara daraman lasterbiderik, lana eta dedikazioa baino ez daude #Arrakasta #ArrakastarenGakoa>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nreasoning:",      
+                "es": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Estoy harto de los famosos que creen que ser un actor conocido los convierte en autoridad sobre cualquier otro tema. #robertredford #UN>\ntarget: Liberal Values\nreasoning: the author is implying that celebrities should not be seen as authorities on political issues, which is often associated with liberal values such as Robert Redford who is a climate change activist -> the author is against liberal values\nstance: against\n\ntweet: <Creo en un mundo donde las personas sean libres de moverse y elegir dónde quieren vivir>\ntarget: Immigration\nreasoning: the author is expressing a belief in a world with more freedom of movement -> the author is in favor of immigration\nstance: favor\n\ntweet: <Me encanta cómo se pone el sol cada día. #Naturaleza #Belleza>\ntarget: Taxes\nreasoning: the author is in favor of nature and beauty -> the author is neutral towards taxes\nstance: neutral\n\ntweet: <Si una mujer elige seguir una carrera en lugar de quedarse en casa, ¿es menos madre por ello?>\ntarget: Conservative Party\nreasoning: the author is questioning traditional gender roles, which are often supported by the conservative party -> the author is against the conservative party\nstance: against\n\ntweet: <Necesitamos asegurarnos de que las personas mentalmente inestables no puedan convertirse en asesinos #proteger #EEUU>\ntarget: Gun Control\nreasoning: the author is advocating for measures to prevent mentally unstable people from accessing guns -> the author is in favor of gun control\nreasoning: the author is in favor of hard work and dedication -> the author is neutral towards open borders\nstance: favor\n\ntweet: <No hay atajos hacia el éxito, solo trabajo duro y dedicación #Éxito #MantraDelÉxito>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nreasoning:",    
+                "ca": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Estic fart dels famosos que es pensen que ser un actor conegut els converteix en una autoritat en qualsevol altra cosa. #robertredford #UN>\ntarget: Liberal Values\nreasoning: the author is implying that celebrities should not be seen as authorities on political issues, which is often associated with liberal values such as Robert Redford who is a climate change activist -> the author is against liberal values\nstance: against\n\ntweet: <Crec en un món on la gent sigui lliure de moure's i escollir on vol viure>\ntarget: Immigration\nreasoning: the author is expressing a belief in a world with more freedom of movement -> the author is in favor of immigration\nstance: favor\n\ntweet: <M'encanta com es pon el sol cada dia. #Natura #Bellesa>\ntarget: Taxes\nreasoning: the author is in favor of nature and beauty -> the author is neutral towards taxes\nstance: neutral\n\ntweet: <Si una dona tria seguir una carrera professional en lloc de quedar-se a casa, és menys mare per això?>\ntarget: Conservative Party\nreasoning: the author is questioning traditional gender roles, which are often supported by the conservative party -> the author is against the conservative party\nstance: against\n\ntweet: <Hem d'assegurar-nos que les persones mentalment inestables no puguin convertir-se en assassins #protegir #EUA>\ntarget: Gun Control\nreasoning: the author is advocating for measures to prevent mentally unstable people from accessing guns -> the author is in favor of gun control\nreasoning: the author is in favor of hard work and dedication -> the author is neutral towards open borders\nstance: favor\n\ntweet: <No hi ha dreceres cap a l'èxit, només treball dur i dedicació #Èxit #MantraDelÈxit>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nreasoning:",    
+                "it": "Question: What is the tweet's stance on the target?\nThe options are:\n- against\n- favor\n- neutral\n\ntweet: <Sono stufo dei personaggi famosi che pensano che essere un attore conosciuto li renda esperti di qualsiasi altro argomento. #robertredford #UN>\ntarget: Liberal Values\nreasoning: the author is implying that celebrities should not be seen as authorities on political issues, which is often associated with liberal values such as Robert Redford who is a climate change activist -> the author is against liberal values\nstance: against\n\ntweet: <Credo in un mondo dove le persone siano libere di muoversi e scegliere dove vogliono vivere>\ntarget: Immigration\nreasoning: the author is expressing a belief in a world with more freedom of movement -> the author is in favor of immigration\nstance: favor\n\ntweet: <Amo il modo in cui il sole tramonta ogni giorno. #Natura #Bellezza>\ntarget: Taxes\nreasoning: the author is in favor of nature and beauty -> the author is neutral towards taxes\nstance: neutral\n\ntweet: <Se una donna sceglie di perseguire una carriera invece di rimanere a casa, è meno madre per questo?>\ntarget: Conservative Party\nreasoning: the author is questioning traditional gender roles, which are often supported by the conservative party -> the author is against the conservative party\nstance: against\n\ntweet: <Dobbiamo assicurarci che le persone mentalmente instabili non possano diventare assassini #proteggere #USA>\ntarget: Gun Control\nreasoning: the author is advocating for measures to prevent mentally unstable people from accessing guns -> the author is in favor of gun control\nreasoning: the author is in favor of hard work and dedication -> the author is neutral towards open borders\nstance: favor\n\ntweet: <Non esistono scorciatoie per il successo, ci sono solo duro lavoro e dedizione #Successo #MantraDelSuccesso>\ntarget: Open Borders\nstance: neutral\n\ntweet: <{text}>\ntarget: {target}\nreasoning:",
+                "label_mapping": {
+                    "favor": "favor",
+                    "against": "against",
+                    "neutral": "neutral"
+                }
+            }
+        }
+    }
+}
